@@ -1,0 +1,27 @@
+
+<%= link_to "Back", root_path, class: 'btn btn-primary btn-xs' %>
+<br>
+
+<%= form_for @product do |f| %>
+
+	<div class="col-md-4"> 
+		<%= f.label :product_code %>
+		<%= f.text_field :product_code %>
+		<br>
+
+		<%= f.label :cost %>
+		<%= f.text_field :cost %>
+		<br>
+		<%= f.label :owner %>
+		<%= f.text_field :owner %>
+		<br>
+
+		<%= f.label :depot %>
+		<%= f.text_field :depot_id, value: Depot.first.id %>
+		<br>
+
+		<%= f.submit %>
+
+	</div>
+
+<% end %>

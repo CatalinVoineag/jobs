@@ -1,0 +1,22 @@
+<div class="col-md-8">
+
+	<%= link_to "Create Product", new_product_path, class: 'btn btn-primary btn-xs' %>
+
+
+	<br>
+
+	<% if !@products.empty? %>
+
+	<%= link_to "Delete Products", delete_all_products_path, method: "POST", class: 'btn btn-xs btn-danger' %>
+
+
+	<ul>
+		<%= @products.each do |product| %>
+			<li><%= product.product_code %></li>
+		<% end %>
+	</ul>
+	<% else %>
+		<h3>No Products Found</h3>
+	<% end %>
+
+</div>
