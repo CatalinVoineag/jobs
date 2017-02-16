@@ -21,7 +21,8 @@ class ProductsController < ApplicationController
 	end
 
 	def delete_all_products
-		Delayed::Job.enqueue ProductJob.new(product_params, action="deletion")
+		
+		Delayed::Job.enqueue ProductJob.new(, action="deletion")
 
 		flash[:notice] = "We are destroying products!"
 		redirect_to root_path
