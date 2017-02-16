@@ -20,10 +20,7 @@ class ProductsController < ApplicationController
 		redirect_to root_path
 	end
 
-	def delete_all_products
 
-		
-	end
 
 	private 
 
