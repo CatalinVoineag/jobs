@@ -55,3 +55,4 @@ gem 'daemons'
 gem "delayed_job_web"
 
 gem 'render_anywhere', :require => false
+gem 'whenever', :require => false
