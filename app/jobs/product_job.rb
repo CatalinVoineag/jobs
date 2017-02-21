@@ -39,7 +39,7 @@ class ProductJob < Struct.new(:product_params, :action)
 
     def perform
     	if action == "creation"
-	      10000.times do 
+	      50000.times do 
           product_params.permit!
 					@product = Product.new(product_params)
 					@product.save
