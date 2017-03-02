@@ -9,16 +9,37 @@ class ProductsController < ApplicationController
 		@product = Product.new
 	end
 
+	def progress_job
+		
+		begin
+
+			@job = Delayed::Job.where(id: params[:job_id]).first
+			
+			
+		  percentage = !@job.progress_max.zero? ? @job.progress_current / @job.progress_max.to_f * 100 : 0
+		  render json: @job.attributes.merge!(percentage: percentage).to_json
+		rescue
+			render json: ''
+		end
+
+	end
+
 	def create
 		
-		
-
-		Delayed::Job.enqueue ProductJob.new(product_params, action="creation")
-
+		#Delayed::Job.enqueue ProductJob.new(product_params, action="creation"
 
 		flash[:notice] = "We are creating your products"
 		redirect_to root_path
 	end
+
+	def download_csv
+
+		id = rand(1000)
+
+		@job = Delayed::Job.enqueue ProductJob.new(id)
+		#redirect_to root_path
+	end
+
 
 
 
