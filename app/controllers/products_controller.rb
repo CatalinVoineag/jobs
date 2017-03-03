@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 	def index
 		products = Product.all
 		@products = products.limit(10)
+		@job = Delayed::Job.first
 	end
 
 	def new
@@ -10,18 +11,14 @@ class ProductsController < ApplicationController
 	end
 
 	def progress_job
-		
 		begin
-
 			@job = Delayed::Job.where(id: params[:job_id]).first
-			
 			
 		  percentage = !@job.progress_max.zero? ? @job.progress_current / @job.progress_max.to_f * 100 : 0
 		  render json: @job.attributes.merge!(percentage: percentage).to_json
 		rescue
 			render json: ''
 		end
-
 	end
 
 	def create

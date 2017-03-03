@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root "products#index"
+  root "main_menu#index"
+
+  resources :main_menu
 
   resources :products
 
